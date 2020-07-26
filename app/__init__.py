@@ -1,18 +1,19 @@
-import os
 from flask import Flask
-from .database import db
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 
 def create_app():
-    app = Flask(__name__)
-    app.config.from_object(os.environ['APP_SETTINGS'])
+    """Construct the core application."""
+    app = Flask(__name__, instance_relative_config=False)
+    app.config.from_object('config.Config')
 
     db.init_app(app)
-    with app.test_request_context():
-        db.create_all()
+    app.config.from_object('config.DevelopmentConfig')
 
-    import app.firstmodule.controllers as firstmodule
+    with app.app_context():
+        from app.payment import controllers  # Import routes
+        db.create_all()  # Create sql tables for our data models
 
-    app.register_blueprint(firstmodule.module)
-
-    return app
+        return app

@@ -20,13 +20,13 @@ def create():
     form = PaymentCreateForm(request.form)
     try:
         if request.method == 'POST' and form.validate():
-            entity = Log(**form.data)
-            db.session.add(entity)
+            log = Log(**form.data)
+            db.session.add(log)
             db.session.flush()
-            id = entity.id
+            _id = log.id
             db.session.commit()
             flash('The Log object was added successfully.', 'success')
-            return redirect(url_for('log.view', id=id))
+            return redirect(url_for('log.view', id=_id))
     except SQLAlchemyError as e:
         log_error('There was error while querying database.', exc_info=e)
         db.session.rollback()

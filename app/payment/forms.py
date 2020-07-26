@@ -1,8 +1,8 @@
-from flask.ext.wtf import Form
-from wtforms import TextAreaField, SelectField, DecimalField
+from wtforms import Form
+from wtforms import TextAreaField, SelectField, DecimalField, SubmitField
 from wtforms.validators import DataRequired
 
-from models import CURRENCY_CHOICE
+from .models import CURRENCY_CHOICE
 
 
 class PaymentCreateForm(Form):
@@ -12,3 +12,4 @@ class PaymentCreateForm(Form):
         'Currency',
         [DataRequired()],
         choices=CURRENCY_CHOICE)
+    submit = SubmitField('Pay')
