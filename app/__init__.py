@@ -1,7 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bootstrap import Bootstrap
+from flask_wtf.csrf import CSRFProtect
+
 
 db = SQLAlchemy()
+csrf = CSRFProtect()
 
 
 def create_app():
@@ -10,6 +14,8 @@ def create_app():
         __name__,
         template_folder="templates")
     app.config.from_object('config.DevelopmentConfig')
+    Bootstrap(app)
+    csrf.init_app(app)
     db.init_app(app)
 
     with app.app_context():
