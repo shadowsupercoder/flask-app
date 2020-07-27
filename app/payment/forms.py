@@ -1,5 +1,4 @@
-from wtforms import Form
-from wtforms import TextAreaField, SelectField, DecimalField, SubmitField
+from wtforms import Form, TextAreaField, SelectField, DecimalField, SubmitField
 from wtforms.validators import DataRequired
 
 from .models import CURRENCY_CHOICE
