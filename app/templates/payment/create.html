@@ -1,21 +1,27 @@
-{% extends "base.html" %}
+{% extends "bootstrap/base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Payment{% endblock %}
 
 {% block content %}
-    <h1>Payment</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.currency.label }}<br>
-            {{ form.currency(size=3) }}
-        </p>
-        <p>
-            {{ form.amount.label }}<br>
-            {{ form.amount(size=8) }}
-        </p>
-        <p>
-            {{ form.description.label }}<br>
-            {{ form.description(size=4096) }}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+    <div class="container">
+        <h1>Payment</h1>
+        <form action="" method="post">
+            <div class='form-group col-xs-4 '>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+                <p>
+                    {{ wtf.form_field(form.currency, class='form-control') }}<br>
+                </p>
+                <p>
+                    {{ wtf.form_field(form.amount, class='form-control') }}
+                </p>
+                <p>
+                    {{ wtf.form_field(form.description, class='form-control') }}
+                </p>
+                <p>{{ wtf.form_field(form.submit, class='btn btn-warning btn-block') }}</p>
+            </div>
+        </form>
+    </div>
 {% endblock %}

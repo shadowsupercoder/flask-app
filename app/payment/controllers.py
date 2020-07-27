@@ -30,5 +30,5 @@ def pay():
     except SQLAlchemyError as e:
         log_error('There was error while querying database.', exc_info=e)
         db.session.rollback()
-        flash('', 'danger')
+        flash('Something went wrong', 'danger')
     return render_template('payment/create.html', form=form)
