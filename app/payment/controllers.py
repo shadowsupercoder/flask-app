@@ -1,6 +1,6 @@
 from flask import (
     Blueprint, render_template, request, flash, redirect, url_for,
-    current_app,
+    current_app
 )
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -8,7 +8,7 @@ from .models import Log, db
 from .forms import PaymentCreateForm
 
 
-module = Blueprint('log', __name__, url_prefix='/log')
+module = Blueprint('log', __name__)
 
 
 def log_error(*args, **kwargs):
@@ -16,7 +16,7 @@ def log_error(*args, **kwargs):
 
 
 @module.route('/', methods=['GET', 'POST'])
-def create():
+def pay():
     form = PaymentCreateForm(request.form)
     try:
         if request.method == 'POST' and form.validate():
