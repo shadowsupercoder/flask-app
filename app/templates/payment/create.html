@@ -6,6 +6,17 @@
 
 {% block content %}
     <div class="container">
+        {# TODO - remove or create a modal window #}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                      <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
         <h1>Payment</h1>
         <form action="" method="post">
             <div class='form-group col-xs-4 '>
@@ -20,7 +31,9 @@
                 <p>
                     {{ wtf.form_field(form.description, class='form-control') }}
                 </p>
-                <p>{{ wtf.form_field(form.submit, class='btn btn-warning btn-block') }}</p>
+                <p>
+                    <input type='submit' value='Pay' class='col-xs-2 btn btn-warning btn-block'>
+                </p>
             </div>
         </form>
     </div>

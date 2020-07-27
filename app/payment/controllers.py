@@ -17,16 +17,18 @@ def log_error(*args, **kwargs):
 
 @module.route('/', methods=['GET', 'POST'])
 def pay():
+    '''
+    Get form for the payment and recieve a POST request to create a Log object.
+    '''
     form = PaymentCreateForm(request.form)
     try:
         if request.method == 'POST' and form.validate():
             log = Log(**form.data)
             db.session.add(log)
             db.session.flush()
-            _id = log.id
             db.session.commit()
             flash('The Log object was added successfully.', 'success')
-            return redirect(url_for('log.view', id=_id))
+            return redirect(url_for('log.pay'))
     except SQLAlchemyError as e:
         log_error('There was error while querying database.', exc_info=e)
         db.session.rollback()
