@@ -12,7 +12,9 @@ def create_app():
     """Construct the core application."""
     app = Flask(
         __name__,
-        template_folder="templates")
+        template_folder="templates",
+        static_url_path="",
+        static_folder="static")
     app.config.from_object('config.DevelopmentConfig')
     Bootstrap(app)
     csrf.init_app(app)

@@ -1,0 +1,20 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Payment Bill{% endblock %}
+
+{% block content %}
+    <form name="Pay" method="post" action="{{ payment_url }}" accept-charset="UTF-8">
+        <input type="hidden" name="amount" value="{{ payment_data.amount }}"/>
+        <input type="hidden" name="currency" value="{{ payment_data.currency }}"/>
+        <input type="hidden" name="shop_id" value="{{ payment_data.shop_id }}"/>
+        <input type="hidden" name="sign" value="{{ payment_data.sign }}"/>
+        <input type="hidden" name="shop_order_id" value="{{ payment_data.shop_order_id }}"/>
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        document.Pay.submit();
+    </script>
+{% endblock %}

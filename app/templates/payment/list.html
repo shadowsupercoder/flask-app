@@ -1,0 +1,35 @@
+{% extends "bootstrap/base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Logs{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h1>Logs</h1>
+		<div>
+            <a href="{{ url_for('log.pay')}}">
+                Return to the pay form
+            </a>
+        </div>
+        </br>
+		<table class="table">
+		  	<tr>
+			    <th scope="col">ID</th>
+			    <th scope="col">Amount</th>
+			    <th scope="col">Currency</th>
+			    <th scope="col">Description</th>
+			    <th scope="col">Created</th>
+		  	</tr>
+		  	{% for log in logs %}
+			  	<tr>
+				    <td scope="row">{{ log.id }}</td>
+				    <td>{{ log.amount }}</td>
+				    <td>{{ log.currency }}</td>
+				    <td>{{ log.description }}</td>
+				    <td>{{ log.created.strftime('%Y-%m-%d') }}</td>
+			   	</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}

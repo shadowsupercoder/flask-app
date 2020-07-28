@@ -12,6 +12,8 @@ class Config:
     SECRET_KEY = '64LedGRHlXyHopEbcVMxj11pbSBosJPg'
     FLASK_APP = environ.get('FLASK_APP')
     FLASK_ENV = environ.get('FLASK_ENV')
+    SECRET_KEY_PTX = environ.get('SECRET_KEY_PTX')
+    SHOP_ID = environ.get('SHOP_ID')
     SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 

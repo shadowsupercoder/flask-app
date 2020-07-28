@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="container">
-        {# TODO - remove or create a modal window #}
+        {# TODO - remove flased msg or create a modal window #}
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <ul>
@@ -18,23 +18,21 @@
         {% endwith %}
 
         <h1>Payment</h1>
-        <form action="" method="post">
+        <div>
+            <a href="{{ url_for('log.get_logs')}}">
+                Check Logs
+            </a>
+        </div>
+        </br>
+        <form action="" name="Pay" method="post">
             <div class='form-group col-xs-4 '>
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-
-                <p>
-                    {{ wtf.form_field(form.currency, class='form-control') }}<br>
-                </p>
-                <p>
-                    {{ wtf.form_field(form.amount, class='form-control') }}
-                </p>
-                <p>
-                    {{ wtf.form_field(form.description, class='form-control') }}
-                </p>
-                <p>
-                    <input type='submit' value='Pay' class='col-xs-2 btn btn-warning btn-block'>
-                </p>
+                {{ wtf.form_field(form.currency, class='form-control') }}<br>
+                {{ wtf.form_field(form.amount, class='form-control') }}
+                {{ wtf.form_field(form.description, class='form-control') }}
+                <input type='submit' value='Pay' class='col-xs-2 btn btn-warning btn-block'>
             </div>
         </form>
+
     </div>
 {% endblock %}

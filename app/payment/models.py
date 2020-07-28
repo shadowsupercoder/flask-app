@@ -4,11 +4,14 @@ from sqlalchemy_utils.types.choice import ChoiceType
 
 from app.database import db
 
+USD_CODE = '840'
+EUR_CODE = '978'
+RUB_CODE = '643'
 
 CURRENCY_CHOICE = [
-    ('usd', 'USD'),
-    ('eur', 'EUR'),
-    ('rub', 'RUB')
+    (USD_CODE, 'USD'),
+    (EUR_CODE, 'EUR'),
+    (RUB_CODE, 'RUB')
 ]
 
 
