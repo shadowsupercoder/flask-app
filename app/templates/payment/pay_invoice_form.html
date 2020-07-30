@@ -4,11 +4,11 @@
 
 {% block content %}
     <form method="{{ payment_data.method_source }}" name="Pay" action="{{ payment_data.url_source }}">
-        <input name="lang" value="{{ payment_data.data_source.lang }}" />
-        <input name="m_curorderid" value="{{ payment_data.data_source.m_curorderid }}"/>
-        <input name="m_historyid" value="{{ payment_data.data_source.m_historyid }}"/>
-        <input name="m_historytm" value="{{ payment_data.data_source.m_historytm }}"/>
-        <input name="referer" value="{{ payment_data.data_source.referer }}"/>
+        <input type="hidden" name="lang" value="{{ payment_data.data_source.lang }}" />
+        <input type="hidden" name="m_curorderid" value="{{ payment_data.data_source.m_curorderid }}"/>
+        <input type="hidden" name="m_historyid" value="{{ payment_data.data_source.m_historyid }}"/>
+        <input type="hidden" name="m_historytm" value="{{ payment_data.data_source.m_historytm }}"/>
+        <input type="hidden" name="referer" value="{{ payment_data.data_source.referer }}"/>
     </form>
 {% endblock %}
 

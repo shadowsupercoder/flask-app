@@ -121,7 +121,7 @@ def get_payment_data(amount, currency, shop_order_id):
         }
     elif currency == RUB_CODE:
         # incoice
-        payway = "card_rub"
+        payway = "payeer_rub"
         url = 'https://core.piastrix.com/invoice/create'
         keys = [amount, currency, payway, SHOP_ID, shop_order_id]
         data.update({"payway": payway})
